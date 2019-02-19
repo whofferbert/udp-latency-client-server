@@ -21,10 +21,10 @@ while True:
     data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
     data_time = "%.6f" % time.time()
     if data:
-        reply = data_time + "," + data.decode('utf-8')
-        diff_calc = float_diff(reply) * 1000
+        diff_str = data_time + "," + data.decode('utf-8')
+        diff_calc = float_diff(diff_str) * 1000
 
-        sent = sock.sendto(reply.encode('utf-8'), addr)
+        sent = sock.sendto(data_time.encode('utf-8'), addr)
 
         out = str(addr) + "\t" + str(diff_calc) + " ms"
         print(out)

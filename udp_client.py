@@ -26,7 +26,9 @@ while True:
     # Receive response
     data, server = sock.recvfrom(4096)
     recv_time = "%.6f" % time.time()
-    one_way_diff = float_diff(data.decode('utf-8')) * 1000
+
+    diff_str = data.decode('utf-8') + "," + message
+    one_way_diff = float_diff(diff_str) * 1000
 
     total_str = recv_time + "," + message
     total_diff = float_diff(total_str) * 1000
